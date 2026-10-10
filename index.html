@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="referrer" content="no-referrer">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="theme-color" content="#0e0f11">
+<meta name="color-scheme" content="dark">
+<meta name="application-name" content="Finances">
+<meta name="apple-mobile-web-app-title" content="Finances">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" sizes="180x180" href="icons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="stylesheet" href="app.css">
+<title>Finances</title>
+</head>
+<body>
+<div id="boot" class="boot"><img src="icons/icon-192.png" alt="" width="72" height="72"><div class="muted">Loading…</div></div>
+
+<div id="lock" class="lock" hidden>
+  <form id="lockForm" class="lock-card" autocomplete="off">
+    <img src="icons/icon-192.png" alt="" width="64" height="64">
+    <h1>Finances</h1>
+    <p class="muted small">Your data is encrypted. Enter your passphrase to unlock.</p>
+    <input type="text" name="username" value="Finances" autocomplete="username" hidden>
+    <input id="pass" type="password" placeholder="Passphrase" autocomplete="current-password" required>
+    <label class="chk"><input id="remember" type="checkbox"> Remember on this device</label>
+    <button id="unlockBtn" type="submit">Unlock</button>
+    <div id="lockErr" class="lock-err" role="alert"></div>
+    <p class="muted tiny">Decrypted only in this browser (AES-GCM, PBKDF2-SHA256). “Remember” stores a non-exportable key in this browser’s IndexedDB, never the passphrase.</p>
+  </form>
+</div>
+
+<div id="app" class="app" hidden>
+  <nav id="nav" class="nav" aria-label="Sections"></nav>
+  <div class="main">
+    <header class="top">
+      <div class="top-l"><button id="backBtn" class="back" hidden aria-label="Back">‹</button><h1 id="title">Overview</h1></div>
+      <div class="top-r"><span id="upd" class="upd"></span><span id="offline" class="offline" hidden>offline</span></div>
+    </header>
+    <main id="view" class="view"></main>
+  </div>
+</div>
+<script src="app.js" defer></script>
+</body>
+</html>
